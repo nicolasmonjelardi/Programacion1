@@ -1,77 +1,111 @@
-#Trabajo práctico n4: listas
+#Trabajo Práctico N3
+
+#En este trabajo intento en lo posible no usar la funcion break ya que se considera una mala práctica
+
 
 #punto 1
-multiplos_de_4=[]
-print("Multiplos de 4 del 1 al 100")
-for numero in range(1,101):
-    if numero % 4 ==0:
-        multiplos_de_4.append(numero)
-
-print(multiplos_de_4)
+for i in range (0,101):
+    print(i)
 
 #punto 2
-lista_numeros=[1,2,3,4,5]
-print(f"Lista de números\n {lista_numeros}")
-print("Penúltimo elemento:")
-print(lista_numeros[-1])
+opcion="si"
+while opcion.lower()=="si":
+    numero=input("Ingrese un número: ")
+    digitos=len(str(abs(int(numero))))
+    print(f"La cantidad de dígitos que tiene el número es: {digitos}")
+    print("//Seleccione la opción deseada//")
+    opcion=input("SI) Ingresar otro número.\nNO) Finalizar. : ")
 
 #punto 3
-lista_vacia=[]
-lista_vacia.append("A")
-lista_vacia.append("B")
-lista_vacia.append("C")
-print("//Lista con palabras//")
-print(lista_vacia)
+opcion="si"
+suma=int(0)
+while opcion.lower()=="si":
+    rango=input("Ingrese un rango numérico con el formato (10-20): ")
+    #Procedo a separar el inicio y el final del rango numérico ingresados por el usuario
+    auxiliar=rango.split("-")
+    inicio_rango=int(auxiliar[0])
+    fin_rango=int(auxiliar[1])
+    for i in range (inicio_rango+1, fin_rango):
+        suma=suma+i
+    print(f"la suma de todos los números comprendidos entre {inicio_rango} y {fin_rango } es: {suma}")
+    print("//Seleccione la opción deseada//")
+    opcion=input("SI) Ingresar más números.\nNO) Finalizar. : ")
+    suma=int(0)
 
 #punto 4
-animales=["perro", "gato", "conejo", "pez"]
-print("//Lista con animales//")
-print(animales)
-animales[-1]="oso"
-animales[-3]="loro"
-print("//Lista con animales nuevos//")
-print(animales)
+opcion="1"
+suma=int(0)
+while opcion=="1":
+    numero=int(input("ingrese un número para sumar: "))
+    suma=suma+numero
+    print("//Ingrese la opción deseada//")
+    opcion=input("1)Ingresar otro número.\n0)Finalizar y mostrar el resultado. ")
+    if opcion=="0":
+        print(f"El resultado de la suma de todos los números ingresados es: {suma}")
+        break
+    else:
+        continue
 
 #punto 5
+import random 
+contador=int(0)
+numero=int(0)
+numero_aleatorio=random.randint(1,10)
+while numero!=numero_aleatorio:
+    numero=int(input("Ingrese un número entre 1 y 10: "))
+    contador=contador+1
 
-#numeros=[8, 15, 3, 22, 7]
-#numeros.remove(max(numeros))
-#print(numeros)
+print(f"Adivinaste! El número era: {numero_aleatorio}\nutilizaste {contador} intentos")
 
-#lo que se realiza en este caso es buscar en valor mas grande en la lista numeros con: max(numeros)
-#luego remover ese valor con: .remove()
-#y por último se muestra la lista sin ese valor 
-
-#punto 6
-numeros=[]
-numeros=list(range(10,31,5))
-print(f"Primer número: {numeros[0]}\nSegundo número: {numeros[1]}")
+#punto 6 
+for i in range (100,0,-1):
+    if i%2==0:
+        print(i)
 
 #punto 7
-autos=["sedan", "polo", "suran", "gol"]
-print(f"Lista de autos: {autos}")
-for i in range(1,3):
-    auto_nuevo=input("Ingrese 2 autos: ")
-    autos[i]=auto_nuevo
+numero=int(input("ingrese un número: "))
+suma=0
+for i in range (0,numero+1):
+    suma=suma+i
 
-print(f"Nueva lista de autos: {autos}")
+print(f"La suma de los números comprendidos entre 0 y {numero} es: {suma}")
 
 #punto 8
-dobles=[]
-dobles.append(5*2)
-dobles.append(10*2)
-dobles.append(15*2)
-print(f"Lista con dobles: {dobles}")
+positivo=int(0)
+negativo=int(0)
+par=int(0)
+impar=int(0)
+for i in range (1,101):
+    numero=int(input("Ingrese 100 números: "))
+    if numero<0:
+        negativo=negativo+1
+    else:
+        positivo=positivo+1
+    
+    if numero%2==0:
+        par=par+1
+    else:
+        impar=impar+1
+
+print(f"De los números ingresados hay:\n{par} números pares\n{impar} números impares\n{positivo} números positivos\n{negativo} números negativos")
 
 #punto 9
-print("Compras: ")
-compras = [["pan", "leche"], ["arroz", "fideos", "salsa"], ["agua"]]
-print(compras)
-compras[2].append("jugo")
-compras[1][1]="tallarines"
-compras[0].remove("pan")
-print(f"Lista de compras actualizada:\n{compras}")
+from statistics import mean
+cantidad_numeros=100
+numeros=[]
+for i in range(cantidad_numeros):
+    numero=int(input("Ingrese un número: "))
+    #La función .append() la saqué de chat gpt ya que no sabía como agregar los números ingresados a la lista
+    numeros.append(numero)
+media=mean(numeros)
+print(f"La media de los números ingresados es: {media}")
 
 #punto 10
-lista_anidada=[15, True, [25.5, 57.9, 30.6], False ]
-print(f"Lista anidada:\n{lista_anidada}")
+opcion="si"
+while opcion.lower()=="si":
+    numero=input("Ingresa un número para darlo vuelta: ")
+    #Esta función (numero[::-1]) tambien la saqué de chat gpt, lo que hace es dividir los dígitos del número e ingresarlos de atrás hacia adelante para eso el (-1)
+    numero_invertido=numero[::-1]
+    print(f"El número {numero} invertido es: {numero_invertido}")
+    print("//Seleccione la opcion deseada//")
+    opcion=input("SI)Ingresar otro número.\nNO)Finalizar el programa. ")

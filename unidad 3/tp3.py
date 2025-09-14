@@ -1,111 +1,117 @@
-#Trabajo Práctico N3
+#Trabajo práctico n3: condicionales 
 
-#En este trabajo intento en lo posible no usar la funcion break ya que se considera una mala práctica
+#punto 1:
+edad=int(input("ingrese su edad: "))
+if edad > 18:
+    print("es mayor de edad")
 
+#punto 2:
+nota=float(input("ingrese su nota: "))
+if nota >= 6:
+    print("aprobado")
+else:
+    print("desaprobado")
 
-#punto 1
-for i in range (0,101):
-    print(i)
-
-#punto 2
-opcion="si"
-while opcion.lower()=="si":
-    numero=input("Ingrese un número: ")
-    digitos=len(str(abs(int(numero))))
-    print(f"La cantidad de dígitos que tiene el número es: {digitos}")
-    print("//Seleccione la opción deseada//")
-    opcion=input("SI) Ingresar otro número.\nNO) Finalizar. : ")
-
-#punto 3
-opcion="si"
-suma=int(0)
-while opcion.lower()=="si":
-    rango=input("Ingrese un rango numérico con el formato (10-20): ")
-    #Procedo a separar el inicio y el final del rango numérico ingresados por el usuario
-    auxiliar=rango.split("-")
-    inicio_rango=int(auxiliar[0])
-    fin_rango=int(auxiliar[1])
-    for i in range (inicio_rango+1, fin_rango):
-        suma=suma+i
-    print(f"la suma de todos los números comprendidos entre {inicio_rango} y {fin_rango } es: {suma}")
-    print("//Seleccione la opción deseada//")
-    opcion=input("SI) Ingresar más números.\nNO) Finalizar. : ")
-    suma=int(0)
-
-#punto 4
-opcion="1"
-suma=int(0)
-while opcion=="1":
-    numero=int(input("ingrese un número para sumar: "))
-    suma=suma+numero
-    print("//Ingrese la opción deseada//")
-    opcion=input("1)Ingresar otro número.\n0)Finalizar y mostrar el resultado. ")
-    if opcion=="0":
-        print(f"El resultado de la suma de todos los números ingresados es: {suma}")
-        break
-    else:
-        continue
-
-#punto 5
-import random 
-contador=int(0)
-numero=int(0)
-numero_aleatorio=random.randint(1,10)
-while numero!=numero_aleatorio:
-    numero=int(input("Ingrese un número entre 1 y 10: "))
-    contador=contador+1
-
-print(f"Adivinaste! El número era: {numero_aleatorio}\nutilizaste {contador} intentos")
-
-#punto 6 
-for i in range (100,0,-1):
-    if i%2==0:
-        print(i)
-
-#punto 7
+#punto 3:
 numero=int(input("ingrese un número: "))
-suma=0
-for i in range (0,numero+1):
-    suma=suma+i
+if numero % 2 ==0:
+    print("ha ingresado un número par")
+else:
+    print("Por favor, ingrese un número par")
 
-print(f"La suma de los números comprendidos entre 0 y {numero} es: {suma}")
+#punto 4:
+edad=int(input("ingrese su edad: "))
+if edad>=0 and edad<12:
+    print("Niño/a")
+elif edad>=12 and edad<18:
+    print("adolescente")
+elif edad>=18 and edad<30:
+    print("adulto/a joven")
+else: 
+    print("adulto/a")
 
-#punto 8
-positivo=int(0)
-negativo=int(0)
-par=int(0)
-impar=int(0)
-for i in range (1,101):
-    numero=int(input("Ingrese 100 números: "))
-    if numero<0:
-        negativo=negativo+1
-    else:
-        positivo=positivo+1
-    
-    if numero%2==0:
-        par=par+1
-    else:
-        impar=impar+1
+#punto 5:
+contraseña=input("ingrese una contraseña: ")
+if len(contraseña) >=8 and len(contraseña) <=14:
+    print("Ha ingresado una contraseña correcta")
+else:
+    print("Por favor, ingrese una contraseña de entre 8 y 14 caracteres")
 
-print(f"De los números ingresados hay:\n{par} números pares\n{impar} números impares\n{positivo} números positivos\n{negativo} números negativos")
+#punto6
+import random 
+numeros_aleatorios=[random.randint(1,100) for _ in range(50)]
+from statistics import mode, median, mean
+moda=mode(numeros_aleatorios)
+mediana=median(numeros_aleatorios)
+media=mean(numeros_aleatorios)
+print(f"moda: {moda}")
+print(f"mediana: {mediana}")
+print(f"media: {media}")
+if media>mediana>moda:
+    print("Sesgo positivo a la derecha")
+elif media<mediana<moda:
+    print("Sesgo negativo a la izquierda")
+elif media==mediana==moda:
+    print("sin sesgo")
 
-#punto 9
-from statistics import mean
-cantidad_numeros=100
-numeros=[]
-for i in range(cantidad_numeros):
-    numero=int(input("Ingrese un número: "))
-    #La función .append() la saqué de chat gpt ya que no sabía como agregar los números ingresados a la lista
-    numeros.append(numero)
-media=mean(numeros)
-print(f"La media de los números ingresados es: {media}")
+#punto 7:
+frase=input("ingrese una palabra o frase: ")
+if frase[-1].lower() in "aeiou":
+    print(f"{frase}!")
+else:
+    print(frase)
 
-#punto 10
-opcion="si"
-while opcion.lower()=="si":
-    numero=input("Ingresa un número para darlo vuelta: ")
-    #Esta función (numero[::-1]) tambien la saqué de chat gpt, lo que hace es dividir los dígitos del número e ingresarlos de atrás hacia adelante para eso el (-1)
-    numero_invertido=numero[::-1]
-    print(f"El número {numero} invertido es: {numero_invertido}")
-    print("//Seleccione la opcion deseada//")
-    opcion=input("SI)Ingresar otro número.\nNO)Finalizar el programa. ")
+#punto 8:
+nombre=input("ingrese su nombre: ")
+print("1) Nombre en mayúsculas")
+print("2) Nombre en minúsculas")
+print("3) Letra inicial en mayúscula")
+opcion=input("Seleccione una opcion: ")
+if opcion == "1":
+    nombre=nombre.upper()
+    print(f"{nombre}")
+elif opcion=="2":
+    nombre=nombre.lower()
+    print(f"{nombre}")
+else:
+    nombre=nombre.title()
+    print(f"{nombre}")
+
+#punto 9:
+magnitud=float(input("Ingrese la magnitud del terremoto: "))
+if magnitud < 3:
+    print("Muy leve (Imperceptible)")
+elif magnitud>=3 and magnitud<4:
+    print("Leve (Ligeramente perceptible)")
+elif magnitud>=4 and magnitud<5:
+    print("Moderado(Sentido por personas, pero generalmente no causa daños)")
+elif magnitud>=5 and magnitud<6:
+    print("Fuerte (Puede causar daños en estructuras débiles)")
+elif magnitud>=6 and magnitud<7:
+    print("Muy fuerte (Puede causar daños significativos)")
+elif magnitud>=7:
+    print("Extremo (Puede causar grandes daños a gran escala)")
+
+#punto 10:
+hemisferio=input("Ingrese en que hemisferio se encuentra (Norte/Sur): ")
+mes=int(input("ingrese el mes actual (número): "))
+dia=int(input("ingrese el día actual (número): "))
+if hemisferio.lower()=="norte":
+    if (mes==12 and dia>=21) or mes==1 or mes==2 or (mes==3 and dia<=20):
+        print("Se encuentra en invierno")
+    elif (mes==3 and dia>=21) or mes==4 or mes==5 or (mes==6 and dia<=20):
+        print("Se encuentra en primavera")
+    elif (mes==6 and dia>=21) or mes==7 or mes==8 or (mes==9 and dia<=20):
+        print("Se encuentra en verano")
+    elif (mes==9 and dia>=21) or mes==10 or mes==11 or (mes==12 and dia<=20):
+        print("Se encuentra en otoño")
+elif hemisferio.lower()=="sur":
+    if (mes==12 and dia>=21) or mes==1 or mes==2 or (mes==3 and dia<=20):
+        print("Se encuentra en verano")
+    elif (mes==3 and dia>=21) or mes==4 or mes==5 or (mes==6 and dia<=20):
+        print("se encuentra en otoño")
+    elif (mes==6 and dia>=21) or mes==7 or mes==8 or (mes==9 and dia<=20):
+        print("Se encuentra en invierno")
+    elif (mes==9 and dia>=21) or mes==10 or mes==11 or (mes==12 and dia<=20):
+        print("Se encuentra en primavera")
+
