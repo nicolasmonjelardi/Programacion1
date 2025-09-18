@@ -1,5 +1,4 @@
 #caso uno: sistema para biblioteca
-#Cuando pido al usuario que ingrese la posición del título no me refiero al índice de la lista[] sino a la posición del print (de izquierda a derecha comenzando en 0)
 titulos=[] 
 ejemplares=[] 
 prestamos=0
@@ -55,17 +54,18 @@ while sistema==True:
             operacion_4=True
             while operacion_4==True:
                 print("// Opciónes disponibles //")
-                print("1) Ingresar título")
+                print("1) Ingresar un título")
                 print("2) Salir")
                 opcion_operacion_4=input("Selecciona una opción: ")
                 if opcion_operacion_4.isdigit() and (int(opcion_operacion_4)>0 and int(opcion_operacion_4)<3 ):
                     if int(opcion_operacion_4)==1:
                         print(titulos)
-                        seleccion_ejemplar=input(f"Ingrese el posición del titulo (0-{(len(titulos)-1)} de izquiera a derecha): ")
-                        if seleccion_ejemplar.isdigit() and (int(seleccion_ejemplar)>=0 and int(seleccion_ejemplar)<=len(titulos)):
-                            print(f"{titulos[int(seleccion_ejemplar)]}: {ejemplares[int(seleccion_ejemplar)]} copias")
+                        seleccion_ejemplar=input("Ingrese el nombre del título: ")
+                        if seleccion_ejemplar in titulos:
+                            indice_titulos=titulos.index(seleccion_ejemplar)
+                            print(f"{titulos[indice_titulos]} : {ejemplares[indice_titulos]} copias")
                         else:
-                            print("Por favor ingrese un índice válido")
+                            print("Por favor ingrese un títulos válido")
                     elif int(opcion_operacion_4)==2:
                         break
                     else:
@@ -103,8 +103,9 @@ while sistema==True:
                 if cantidad_ejemplares_actualizados.isdigit() and int(cantidad_ejemplares_actualizados)>0:
                     print(titulos)
                     for i in range(int(cantidad_ejemplares_actualizados)):
-                            ejemplar_actualizado=input(f"Seleccione la posición del título que quiere actualizar (0-{(len(titulos)-1)} de izquierda a derecha): ")
-                            if ejemplar_actualizado.isdigit() and (int(ejemplar_actualizado)>=0 and int(ejemplar_actualizado)<=len(titulos)):
+                            ejemplar_actualizado=input("Ingrese el título que desea actualizar: ")
+                            if ejemplar_actualizado in titulos:
+                                indice_ejemplares=titulos.index(ejemplar_actualizado)
                                 print("// Opciónes disponibles //")
                                 print("1) Prestamo")
                                 print("2) Devolución")
@@ -112,16 +113,16 @@ while sistema==True:
                                 if opcion_operacion_7.isdigit() and (int(opcion_operacion_7)>0 and int(opcion_operacion_7)<3):
                                     if int(opcion_operacion_7)==1:
                                         prestamo=input("Ingrese cuantos ejemplares se dieron a préstamo: ")
-                                        if prestamo.isdigit() and (int(prestamo)>0 and int(prestamo)<= ejemplares[int(ejemplar_actualizado)]):
-                                            ejemplares[int(ejemplar_actualizado)] -= int(prestamo)
+                                        if prestamo.isdigit() and (int(prestamo)>0 and int(prestamo)<= ejemplares[indice_ejemplares]):
+                                            ejemplares[indice_ejemplares] -= int(prestamo)
                                     elif int(opcion_operacion_7)==2:
                                         devolucion=input("Ingrese cuantos ejemplares se devolvieron: ")
                                         if devolucion.isdigit() and int(devolucion)>0:
-                                            ejemplares[int(ejemplar_actualizado)]+=int(devolucion)
+                                            ejemplares[indice_ejemplares]+=int(devolucion)
                                 else:
                                     print("Por favor ingrese una opción válida ")
                             else:
-                                print("Por favor ingrese un índice válido")
+                                print("Por favor ingrese un título válido")
                 else:
                     print("Por favor ingrese una cantidad válida")
             else:
